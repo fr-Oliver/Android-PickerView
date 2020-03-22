@@ -1,6 +1,7 @@
 package com.contrarywind.view;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -200,6 +201,7 @@ public class WheelView extends View {
         paintCenterText.setTextSize(textSize);
 
         paintIndicator = new Paint();
+        paintIndicator.setStrokeWidth(dp2px(getResources(), 2));
         paintIndicator.setColor(dividerColor);
         paintIndicator.setAntiAlias(true);
 
@@ -235,6 +237,11 @@ public class WheelView extends View {
             }
         }
         preCurrentIndex = initPosition;
+    }
+
+    public static float dp2px(Resources resources, float dp) {
+        final float scale = resources.getDisplayMetrics().density;
+        return dp * scale + 0.5f;
     }
 
     /**
